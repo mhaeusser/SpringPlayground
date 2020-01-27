@@ -1,4 +1,5 @@
 package tacos;
+
 import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -82,16 +83,16 @@ public class DesignTacoControllerTest {
                 new Ingredient("FLTO", "Flour Tortilla", Type.WRAP),
                 new Ingredient("GRBF", "Ground Beef", Type.PROTEIN),
                 new Ingredient("CHED", "Cheddar", Type.CHEESE)
-        	));
+            ));
 
         when(userRepository.findByUsername("testuser"))
-        		.thenReturn(new User("testuser", "testpass", "Test User", "123 Street", "Someville", "CO", "12345", "123-123-1234"));
+                .thenReturn(new User("testuser", "testpass", "Test User", "123 Street", "Someville", "CO", "12345", "123-123-1234"));
     }
 
     @Test
     @WithMockUser(username="testuser", password="testpass")
     public void testShowDesignForm() throws Exception {
-	mockMvc.perform(get("/design"))
+    mockMvc.perform(get("/design"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("design"))
                 .andExpect(model().attribute("wrap", ingredients.subList(0, 2)))
@@ -108,7 +109,7 @@ public class DesignTacoControllerTest {
                 .thenReturn(design);
         
         when(userRepository.findByUsername("testuser"))
-	.thenReturn(new User("testuser", "testpass", "Test User", "123 Street", "Someville", "CO", "12345", "123-123-1234"));
+    .thenReturn(new User("testuser", "testpass", "Test User", "123 Street", "Someville", "CO", "12345", "123-123-1234"));
 
         mockMvc.perform(post("/design").with(csrf())
                 .content("name=Test+Taco&ingredients=FLTO,GRBF,CHED")
