@@ -1,0 +1,13 @@
+
+C:\SPRING\src\main\resources\bookService_test.xml
+
+java -jar bookstore-0.0.1-SNAPSHOT.jar
+
+java -jar bookstore-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+
+
+
+
+java -jar bookstore-0.0.1-SNAPSHOT-jar-with-dependencies.jar C:\SPRING\src\main\resources\bookService_prod.xml
+
+java -jar bookstore-0.0.1-SNAPSHOT-jar-with-dependencies.jar C:\SPRING\src\main\resources\bookService_test.xml

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="mapBooksService"
+	 class="org.javacream.books.warehouse.business.MapBooksService">
+	 	<property name="keyGenerator" ref="randomKeyGeneratorImpl" />
+		<property name="storeService">
+			<bean class="org.javacream.store.test.StoreServiceDummy" />
+		</property>
+	</bean>
+
+    <bean id="randomKeyGeneratorImpl"
+     class="org.javacream.keygeneration.business.RandomKeyGeneratorImpl">
+        <property name="countryCode" value="-de" />
+        <property name="prefiX" value="TEST" />
+    </bean>
+
+</beans>
