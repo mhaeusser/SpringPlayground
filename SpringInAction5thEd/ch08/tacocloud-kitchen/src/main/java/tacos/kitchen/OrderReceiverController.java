@@ -15,17 +15,15 @@ import tacos.Order;
 @RequiredArgsConstructor
 public class OrderReceiverController {
 
-  private final OrderReceiver orderReceiver;
-  
-  @GetMapping("/receive")
-  public String receiveOrder(Model model) {
-    Order order = orderReceiver.receiveOrder();
-    if (order != null) {
-      model.addAttribute("order", order);
-      return "receiveOrder";
+    private final OrderReceiver orderReceiver;
+    
+    @GetMapping("/receive")
+    public String receiveOrder(Model model) {
+        Order order = orderReceiver.receiveOrder();
+        if (order != null) {
+            model.addAttribute("order", order);
+            return "receiveOrder";
+        }
+        return "noOrder";
     }
-    return "noOrder";
-  }
-  
-  
 }
